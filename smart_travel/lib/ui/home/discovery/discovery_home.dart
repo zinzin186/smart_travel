@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_travel/resource/color.dart';
 import 'package:smart_travel/resource/font.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import '../../../api/base_api.dart';
 import '../../../model/content_item.dart';
@@ -35,9 +35,12 @@ class _DiscoveryHomeState extends BaseBlocHomeState<DiscoveryHomeWidget> {
       return;
     }
     final response = await ClientAPI.getInstance().getDiscoveryItemList(widget.block.children![_currentIndex].contentLink ?? "");
-    setState(() {
-      items = response;
-    });
+    if (mounted) {
+      setState(() {
+        items = response;
+      });
+    }
+
   }
 
   @override
@@ -158,7 +161,7 @@ class DiscoveryItemWidget extends StatelessWidget {
       width: 165,
       decoration: BoxDecoration(
           image: DecorationImage(
-            image: NetworkImage(image ?? ""),
+            image: CachedNetworkImageProvider(image ?? ""),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
                 Colors.black.withOpacity(0.2),

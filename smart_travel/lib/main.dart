@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:smart_travel/routers.dart';
 import 'package:smart_travel/ui/bottom_tabbar.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,8 +13,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
+      navigatorKey: Get.key,
+      onGenerateRoute: Routers.generateRoute,
       theme: ThemeData(
         // This is the theme of your application.
         //

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:cached_network_image/cached_network_image.dart';
 
 class CateogryItemWidget extends StatelessWidget {
   final double width;
@@ -17,7 +17,7 @@ class CateogryItemWidget extends StatelessWidget {
       padding: EdgeInsets.only(top: 4),
       child: Column(
         children: [
-          Image.network(iconUrl, height: 44, width: 44, fit: BoxFit.fill,),
+          CachedNetworkImage(height: 44, width: 44, fit: BoxFit.fill, imageUrl: iconUrl),
           const SizedBox(height: 5,),
           Expanded(
               child: Text(

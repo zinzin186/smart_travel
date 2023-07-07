@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:smart_travel/ui/home/discovery/discovery_home.dart';
 import 'package:smart_travel/ui/home/top_main/top_main_home.dart';
 import 'package:smart_travel/ui/home/voucher/voucher_home.dart';
+import 'package:get/get.dart';
 
 import '../../api/base_api.dart';
 import '../../base/base_app_bar.dart';
 import '../../model/home_block.dart';
+import '../../routers.dart';
 import 'ads/ads_home.dart';
 import 'experience/experience_home.dart';
 import 'favorite/favorite_home.dart';
@@ -56,7 +58,8 @@ class _MainHomeState extends State<MainHomePage> {
                 print(block.backgroundUrls?.length);
                 return TopMainHomeWidget(block: block, onTapSearch: () {
                   print("tâppp");
-                  _getApi();
+                  // _getApi();
+                  Get.toNamed(Routers.moment);
                 },);
               }
               if (code == "APP_VOUCHER_NOW") {

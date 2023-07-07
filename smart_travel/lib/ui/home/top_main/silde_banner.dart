@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smart_travel/ui/home/top_main/search_home.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class SlideBannerWidget extends StatefulWidget {
 
@@ -35,7 +36,7 @@ class _SlideBannerState extends State<SlideBannerWidget> {
           items: widget.banners
               .map((item) => Container(
             decoration: BoxDecoration(
-              image: DecorationImage(image: NetworkImage(item),
+              image: DecorationImage(image: CachedNetworkImageProvider(item),
                 fit: BoxFit.cover,
               ),
             ),
