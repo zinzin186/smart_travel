@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_travel/routers.dart';
+import 'package:smart_travel/routers/routers.dart';
 import 'package:smart_travel/ui/bottom_tabbar.dart';
 import 'package:get/get.dart';
 

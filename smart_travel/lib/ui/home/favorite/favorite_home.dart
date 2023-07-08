@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_travel/resource/color.dart';
 import 'package:smart_travel/resource/font.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import '../../../api/base_api.dart';
 import '../../../model/home_block.dart';
@@ -55,15 +56,15 @@ List<MenuModel> items = [];
   @override
   Widget mainUI() {
     if (items.isEmpty) {
-      return SizedBox();
+      return const SizedBox();
     }
-    return Container(
+    return SizedBox(
       height: 340,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          SizedBox(height: 20,),
-          Container(
+          const SizedBox(height: 20,),
+          SizedBox(
             height: 106,
             child:  ListView.separated(
               itemCount: items.length + 1,
@@ -83,7 +84,7 @@ List<MenuModel> items = [];
           ),
           const SizedBox(height: 50,),
           Container(
-            margin: EdgeInsets.only(left: 20, right: 20),
+            margin: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
@@ -100,7 +101,7 @@ List<MenuModel> items = [];
 
                 },
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(176, 38),
+                      minimumSize: const Size(176, 38),
                   backgroundColor: AppColor.mainColor, // background
                   foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
@@ -128,7 +129,7 @@ class FavoriteCityItemWidget extends StatelessWidget {
     if (item == null) {
       return Container(
         width: width,
-        padding: EdgeInsets.only(top: 4),
+        padding: const EdgeInsets.only(top: 4),
         decoration: BoxDecoration(
           image: DecorationImage(
             image: const AssetImage("assets/images/banners/bg_suggest.jpg"),
@@ -158,7 +159,7 @@ class FavoriteCityItemWidget extends StatelessWidget {
       padding: const EdgeInsets.only(top: 4),
       decoration: BoxDecoration(
           image: DecorationImage(
-            image: NetworkImage(item?.bannerUrl ?? ""),
+            image: CachedNetworkImageProvider(item?.bannerUrl ?? ""),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
                 Colors.black.withOpacity(0.2),

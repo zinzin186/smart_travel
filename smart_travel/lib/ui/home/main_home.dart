@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_travel/api/home/home_service.dart';
 import 'package:smart_travel/ui/home/discovery/discovery_home.dart';
 import 'package:smart_travel/ui/home/top_main/top_main_home.dart';
 import 'package:smart_travel/ui/home/voucher/voucher_home.dart';
 import 'package:get/get.dart';
 
-import '../../api/base_api.dart';
 import '../../base/base_app_bar.dart';
 import '../../model/home_block.dart';
-import '../../routers.dart';
+import '../../routers/routers.dart';
 import 'ads/ads_home.dart';
 import 'experience/experience_home.dart';
 import 'favorite/favorite_home.dart';
@@ -31,11 +31,11 @@ class _MainHomeState extends State<MainHomePage> {
     _getApi();
 
   }
-
+  final HomeService api = HomeService();
   _getApi() async {
-    final response = await ClientAPI.getInstance().getHomeBlocks();
+    final response = await api.getHomeBlocks();
     setState(() {
-      homeBlocks = response;
+      homeBlocks = response.data;
     });
   }
 

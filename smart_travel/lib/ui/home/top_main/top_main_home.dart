@@ -34,7 +34,7 @@ class _TopMainHomeState extends State<TopMainHomeWidget> {
               left: 0,
               right: 0,
               bottom: 0,
-              child: CateogryWidget(items: widget.block.children ?? [],))
+              child: CateogryWidget(items: widget.block.menus ?? [],))
         ],
       ),
     );
