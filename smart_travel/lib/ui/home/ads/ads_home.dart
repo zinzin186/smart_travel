@@ -33,9 +33,12 @@ class _AdsBannerState extends State<AdsBannerWidget> {
       return;
     }
     final response = await ClientAPI.getInstance().getAdsList(widget.block.contentLink!);
-    setState(() {
-      items = response;
-    });
+    if (mounted) {
+      setState(() {
+        items = response;
+      });
+    }
+
   }
 
   @override

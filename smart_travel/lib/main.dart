@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:smart_travel/routers/pages.dart';
+import 'package:smart_travel/routers/router_name.dart';
 import 'package:smart_travel/routers/routers.dart';
-import 'package:smart_travel/ui/bottom_tabbar.dart';
+import 'package:smart_travel/ui/tabbar/app_bottom_tabbar.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -16,7 +18,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       navigatorKey: Get.key,
-      onGenerateRoute: Routers.generateRoute,
+      initialRoute: RouterName.mainTabbar,
+      getPages: Pages.pages,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -36,7 +39,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const BottomTabbarWidget(),
+      // home: AppBottomTabbarWidget(),
     );
   }
 }

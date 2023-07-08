@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../../base/base_app_bar.dart';
 import '../../resource/color.dart';
 import '../../resource/font.dart';
+import '../../routers/router_name.dart';
 import '../main_category.dart';
 
 class ExplorePlacePage extends StatefulWidget {
@@ -48,17 +51,22 @@ class _ExplorePlaceState extends State<ExplorePlacePage> {
               ),
               child: Row(
                 children: [
-                  Container(
-                    height: 40,
-                    decoration: BoxDecoration(
-                      color: Colors.black12,
-                    ),
-                    padding: EdgeInsets.only(left: 12, right: 12),
-                    child: Row(
-                      children: [
-                        Text("Ha noi1"),
-                        Icon(Icons.arrow_circle_down)
-                      ],
+                  InkWell(
+                    onTap: () {
+                      Get.toNamed(RouterName.home);
+                    },
+                    child: Container(
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: Colors.black12,
+                      ),
+                      padding: EdgeInsets.only(left: 12, right: 12),
+                      child: Row(
+                        children: [
+                          Text("Ha noi1"),
+                          Icon(Icons.arrow_circle_down)
+                        ],
+                      ),
                     ),
                   ),
                   Expanded(child: Container(
