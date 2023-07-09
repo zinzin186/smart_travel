@@ -18,7 +18,7 @@ class MainHomeController extends BaseController {
 
   void _initData() async {
     final response = await _api.getHomeBlocks();
-    homeBlocks.value = response.data;
+    homeBlocks.value = response.data.where((element) => element.code != "APP_CREATE_TOUR").toList();
   }
 
 }
