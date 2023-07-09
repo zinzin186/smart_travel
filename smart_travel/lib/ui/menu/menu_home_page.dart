@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_travel/api/home/home_service.dart';
 import 'package:smart_travel/resource/font.dart';
 
-import '../../api/base_api.dart';
 import '../../model/menu_item.dart';
 import '../../resource/button.dart';
 import '../home/top_main/category_item.dart';
@@ -27,7 +27,7 @@ class _MenuHomeState extends State<MenuHomePage> {
   MenuSetting menus = MenuSetting();
 
   _getApi() async {
-    final response = await ClientAPI.getInstance().getSettingMenuItem();
+    final response = await HomeService().getSettingMenuItem();
     setState(() {
       menus = response;
     });

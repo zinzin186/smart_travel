@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_travel/api/home/home_service.dart';
 import 'package:smart_travel/resource/color.dart';
 import 'package:smart_travel/resource/font.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-import '../../../api/base_api.dart';
 import '../../../model/content_item.dart';
 import '../../../model/home_block.dart';
-import '../../../model/menu_item.dart';
 import '../base_widget_home.dart';
 
 class DiscoveryHomeWidget extends BaseBlocHomeWidget {
@@ -34,10 +33,10 @@ class _DiscoveryHomeState extends BaseBlocHomeState<DiscoveryHomeWidget> {
     if (widget.block.children?.first == null) {
       return;
     }
-    final response = await ClientAPI.getInstance().getDiscoveryItemList(widget.block.children![_currentIndex].contentLink ?? "");
+    final response = await HomeService().getDiscoveryItemList(widget.block.children![_currentIndex].contentLink ?? "");
     if (mounted) {
       setState(() {
-        items = response;
+        items = response.data;
       });
     }
 

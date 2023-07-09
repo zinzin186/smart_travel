@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smart_travel/model/home_block.dart';
 import 'package:smart_travel/model/voucher.dart';
-import 'package:smart_travel/ui/home/top_main/search_home.dart';
-
-import '../../../api/base_api.dart';
+import '../../../api/home/home_service.dart';
 import '../base_widget_home.dart';
 
 class AdsBannerWidget extends BaseBlock {
@@ -32,13 +30,10 @@ class _AdsBannerState extends State<AdsBannerWidget> {
     if (widget.block.contentLink?.isEmpty ?? true) {
       return;
     }
-    final response = await ClientAPI.getInstance().getAdsList(widget.block.contentLink!);
-    if (mounted) {
-      setState(() {
-        items = response;
-      });
-    }
-
+    final response = await HomeService().getAdsList(widget.block.contentLink!);
+    setState(() {
+      items = response.data;
+    });
   }
 
   @override

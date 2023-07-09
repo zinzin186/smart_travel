@@ -16,29 +16,22 @@ class MomentHomeBinding extends Bindings {
 
   @override
   void dependencies() {
-    // Get.lazyPut(() => MomentHomeController());
+    Get.lazyPut(() => MomentHomeController());
   }
 }
 
 class MomentHomePage extends GetView<MomentHomeController> {
 
-  final List<Widget> images = [
+  static List<Widget> images = [
     Image.asset("assets/images/bg_home_favorite_location.png", fit: BoxFit.cover, width: 300, height: 300,),
     Image.asset("assets/images/bg_home_favorite_location.png", fit: BoxFit.cover, width: 300, height: 300,),
     Image.asset("assets/images/bg_home_favorite_location.png", fit: BoxFit.cover, width: 300, height: 300,),
     Image.asset("assets/images/bg_home_favorite_location.png", fit: BoxFit.cover, width: 300, height: 300,),
     Image.asset("assets/images/bg_home_favorite_location.png", fit: BoxFit.cover, width: 300, height: 300,),
-    // Image.asset("assets/images/bg_moment.jpg", fit: BoxFit.fill, width: 100, height: 300,),
-    // Image.asset("assets/images/bg_moment.jpg", fit: BoxFit.fill, width: 100, height: 300,),
-    // Image.asset("assets/images/bg_moment.jpg", fit: BoxFit.fill, width: 100, height: 300,),
-    // Image.asset("assets/images/bg_moment.jpg", fit: BoxFit.fill, width: 100, height: 300,),
-    // Image.asset("assets/images/bg_moment.jpg", fit: BoxFit.fill, width: 100, height: 300,),
   ];
 
-  // int _current = 0;
-  final CarouselController _controller = CarouselController();
 
-  MomentHomePage({super.key});
+  const MomentHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +127,7 @@ class MomentHomePage extends GetView<MomentHomeController> {
                   const SizedBox(height: 20,),
                   CarouselSlider(
                     items: images,
-                    carouselController: _controller,
+                    carouselController: controller.carouselController,
                     options: CarouselOptions(
                         autoPlay: true,
                         enlargeCenterPage: true,

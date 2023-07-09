@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 class ApiService {
   static Dio? _dio;
   String baseUrl;
+  final String langCode = "vi";
   late Options requestOptions;
 
   ApiService(this.baseUrl, {
@@ -35,8 +36,38 @@ class ApiService {
     Map<String, dynamic>? query,
     CancelToken? cancelToken,
   }) async {
+    if (query != null) {
+      query["lang_code"] = langCode;
+    } else {
+      query = {
+        "lang_code": langCode,
+      };
+    }
     try {
       Response<T> response = await _dio!.get<T>(baseUrl + endPoint,
+          queryParameters: query,
+          cancelToken: cancelToken,
+          options: requestOptions);
+      return response;
+    } catch (e) {
+      throw _parseError(e);
+    }
+  }
+
+  Future<Response<T>> getContent<T>({
+    required String contentLink,
+    Map<String, dynamic>? query,
+    CancelToken? cancelToken,
+  }) async {
+    try {
+      if (query != null) {
+        query["lang_code"] = langCode;
+      } else {
+        query = {
+          "lang_code": langCode,
+        };
+      }
+      Response<T> response = await _dio!.get<T>(contentLink,
           queryParameters: query,
           cancelToken: cancelToken,
           options: requestOptions);

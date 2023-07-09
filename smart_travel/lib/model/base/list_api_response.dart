@@ -19,10 +19,10 @@ class ListAPIResponse<T> {
 
   factory ListAPIResponse.fromJson(Map<String, dynamic> json) =>
       ListAPIResponse(
-        code: json["code"],
-        message: json["message"],
-        data:
-        List<T>.from(json["data"].map((x) => AppParserJson.parseJson<T>(x))),
+        code: json["code"] ?? "",
+        message: json["message"] ?? "",
+        data: json["data"] is List ?
+        List<T>.from(json["data"].map((x) => AppParserJson.parseJson<T>(x))) : List<T>.from(json["data"]["items"].map((x) => AppParserJson.parseJson<T>(x))),
       );
 
   Map<String, dynamic> toJson() => {

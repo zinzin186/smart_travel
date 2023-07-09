@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_travel/api/home/home_service.dart';
 import 'package:smart_travel/resource/color.dart';
 import 'package:smart_travel/resource/font.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-import '../../../api/base_api.dart';
 import '../../../model/home_block.dart';
 import '../../../model/menu_item.dart';
 import '../base_widget_home.dart';
@@ -29,9 +29,9 @@ List<MenuModel> items = [];
     if (widget.block.contentLink?.isEmpty ?? true) {
       return;
     }
-    final response = await ClientAPI.getInstance().getRegionsList(widget.block.contentLink!);
+    final response = await HomeService().getRegionsList(widget.block.contentLink!);
     setState(() {
-      items = response;
+      items = response.data;
     });
   }
 
