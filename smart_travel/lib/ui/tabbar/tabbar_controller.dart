@@ -16,11 +16,11 @@ import '../menu/menu_home_page.dart';
 class TabbarController extends BaseController {
   RxInt selectedIndex = 2.obs;
   final List<TabbarModel> tabbarItems = [
-    const TabbarModel(imageName: "assets/images/tabbar_hightlight.png", name: "Khám phá", id: 0, widget: ExplorePlacePage()),
-    const TabbarModel(imageName: "assets/images/tabbar_motor.png", name: "Khoảnh khắc", id: 1, widget: MomentHomePage()),
-    const TabbarModel(imageName: "assets/images/tabbar_motor.png", name: "", id: 2, widget: MainHomePage()),
-    const TabbarModel(imageName: "assets/images/tabbar_car.png", name: "Video", id: 3, widget: VideoHomePage()),
-    const TabbarModel(imageName: "assets/images/tabbar_search.png", name: "Menu", id: 4, widget: MenuHomePage())
+    const TabbarModel(imageName: "assets/images/tabbar/tabbar_discovery.png", name: "Khám phá", id: 0, widget: ExplorePlacePage()),
+    const TabbarModel(imageName: "assets/images/tabbar/tabbar_moment.png", name: "Khoảnh khắc", id: 1, widget: MomentHomePage()),
+    const TabbarModel(imageName: "", name: "", id: 2, widget: MainHomePage()),
+    const TabbarModel(imageName: "assets/images/tabbar/tabbar_video.png", name: "Video", id: 3, widget: VideoHomePage()),
+    const TabbarModel(imageName: "assets/images/tabbar/tabbar_menu.png", name: "Menu", id: 4, widget: MenuHomePage())
   ];
 
   @override

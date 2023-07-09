@@ -25,16 +25,22 @@ class AppBottomTabbarWidget extends GetView<TabbarController> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Obx(() => controller.widgetOptions.elementAt(controller.selectedIndex.value)),
-        bottomNavigationBar: Obx(() => BottomNavigationBar(
-          items: controller.tabbarItems.map((item) => BottomNavigationBarItem(
-            icon: Image.asset(item.imageName, height: 20, width: 20, color: controller.selectedIndex.value == item.id ? Colors.red : Colors.grey,),
-            label: item.name,
-          ),).toList(),
-          type: BottomNavigationBarType.fixed,
-          currentIndex: controller.selectedIndex.value,
-          selectedItemColor: Colors.red,
-          unselectedItemColor: Colors.grey,
-          onTap: controller.onItemTapped,
+        extendBody: true,
+        bottomNavigationBar: Obx(() => ClipRRect(
+          borderRadius: const BorderRadius.only(topLeft: Radius.circular(12.0), topRight: Radius.circular(12.0)),
+          child: BottomNavigationBar(
+            items: controller.tabbarItems.map((item) => BottomNavigationBarItem(
+              icon: item.imageName.isEmpty ? SizedBox() : Image.asset(item.imageName, height: 20, width: 20, color: controller.selectedIndex.value == item.id ? Colors.red : Colors.grey,),
+              label: item.name,
+            ),).toList(),
+            type: BottomNavigationBarType.fixed,
+            currentIndex: controller.selectedIndex.value,
+            selectedItemColor: Colors.red,
+            selectedFontSize: 10,
+            unselectedFontSize: 10,
+            unselectedItemColor: Colors.grey,
+            onTap: controller.onItemTapped,
+          ),
         ) ),
       floatingActionButton: Container(
         width: 70, height: 100,
@@ -43,7 +49,7 @@ class AppBottomTabbarWidget extends GetView<TabbarController> {
           child: Container(
               decoration: const BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage("assets/images/tabbar_sentrip.png"),
+                      image: AssetImage("assets/images/tabbar/tabbar_sentrip.png"),
                       fit: BoxFit.fill
                   )
               )
